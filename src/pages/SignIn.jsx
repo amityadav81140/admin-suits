@@ -6,14 +6,13 @@ import curved6 from "../assets/img/curved-images/tailor_img.png";
 import Footer from "../Components/Footer";
 
 const SignIn = () => {
-
   // REMEMBER ME STATE
   // const [remember, setRemember] = useState(false);
 
   // LOGIN ERROR STATE
   const [loginErr, setLoginErr] = useState({
     status: false,
-    message: '',
+    message: "",
   });
 
   // LOGING INPUT VALUES STATE
@@ -38,10 +37,13 @@ const SignIn = () => {
     let credentials = {
       ...loginCredentials,
       // remember: remember,
-    }
+    };
 
-    axios.post(`${process.env.REACT_APP_BASE_URL}login`, credentials, { withCredentials: true })
-      .then(res => {
+    axios
+      .post(`${process.env.REACT_APP_BASE_URL}login`, credentials, {
+        withCredentials: false,
+      })
+      .then((res) => {
         // console.log(res.data.data.token);
         if (res.data.status) {
           window.sessionStorage.setItem("access-vs", res.data.data.token);
@@ -62,7 +64,6 @@ const SignIn = () => {
       .catch((AxiosError) => {
         console.log(AxiosError.response.data.errors);
       });
-
   };
 
   return (
@@ -82,15 +83,26 @@ const SignIn = () => {
                         Enter your email and password to sign in
                       </p>
                       {/* ------------------- LOGIN FORM ERROR MESSAGE -------------------- */}
-                      {loginErr.status &&
-                        <div className="alert alert-danger alert-dismissible fade show text-white" role="alert">{loginErr.message}<button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => {
-                          setLoginErr({
-                            status: false,
-                            message: '',
-                          });
-                        }}></button>
+                      {loginErr.status && (
+                        <div
+                          className="alert alert-danger alert-dismissible fade show text-white"
+                          role="alert"
+                        >
+                          {loginErr.message}
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"
+                            onClick={() => {
+                              setLoginErr({
+                                status: false,
+                                message: "",
+                              });
+                            }}
+                          ></button>
                         </div>
-                      }
+                      )}
                     </div>
                     <div className="card-body">
                       <form onSubmit={signIn}>
