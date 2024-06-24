@@ -29,7 +29,7 @@
     "suneditor-react": "^3.4.1",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "http://3.7.7.239:8081/",
+  "proxy": "http://yalladrive.eighteenpixels.in:4000/",
   "scripts": {
     "start": "HTTPS=false react-scripts start",
     "build": "react-scripts build",
