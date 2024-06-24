@@ -29,8 +29,9 @@
     "suneditor-react": "^3.4.1",
     "web-vitals": "^2.1.4"
   },
+  "proxy": "http://3.7.7.239:8081/",
   "scripts": {
-    "start": "set PORT=8082 && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
